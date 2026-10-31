@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Cores e fontes do projeto (viram classes do Tailwind: bg-papel, text-tinta, bg-sol...) */
+@theme {
+  --color-papel: #f7f4ee;
+  --color-tinta: #142033;
+  --color-sol: #f2b544;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+}
+
+body {
+  background: var(--color-papel);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+}
+
+/* Bolinha numerada das citações [1], [2]... */
+.citacao {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  margin-left: 0.15rem;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background: var(--color-sol);
+  color: var(--color-tinta);
+  font-size: 0.68rem;
+  font-weight: 600;
+  vertical-align: super;
+  line-height: 1;
+}
+
+.citacao-grande {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+  font-size: 0.75rem;
+  vertical-align: middle;
+}
+
+/* Marca-texto amarelo no título */
+.destaque {
+  background: linear-gradient(transparent 60%, color-mix(in srgb, var(--color-sol) 55%, transparent) 60%);
+  padding: 0 0.15em;
+}
+
+/* Animação dos "..." enquanto carrega */
+.pontinhos::after {
+  content: "";
+  animation: pontinhos 1.2s steps(4, end) infinite;
+}
+
+@keyframes pontinhos {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+}
