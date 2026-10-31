@@ -1,0 +1,25 @@
+# Liga o projeto inteiro com um comando:  docker compose up --build
+services:
+  backend:
+    build: ./backend
+    env_file: ./backend/.env          # a chave do Gemini vem daqui (nunca do código)
+    environment:
+      CORS_ORIGINS: http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/app/chroma_db    # guarda o banco vetorial entre um "up" e outro
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # O navegador acessa a API pelo seu computador, por isso é localhost
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  chroma_data:
