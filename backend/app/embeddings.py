@@ -10,7 +10,15 @@ from app.config import DIMENSOES, GEMINI_API_KEY, MODELO_EMBEDDING
 if not GEMINI_API_KEY:
     raise RuntimeError("GEMINI_API_KEY não encontrada. Confira o arquivo backend/.env")
 
-cliente = genai.Client(api_key=GEMINI_API_KEY)
+# timeout: desiste depois de 60s em vez de ficar travado
+# attempts=1: a biblioteca não tenta de novo escondido; quem cuida disso é o nosso código
+cliente = genai.Client(
+    api_key=GEMINI_API_KEY,
+    http_options=types.HttpOptions(
+        timeout=60_000,
+        retry_options=types.HttpRetryOptions(attempts=1),
+    ),
+)
 
 
 def gerar_embeddings(textos: list[str], tipo: str) -> list[list[float]]:

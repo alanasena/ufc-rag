@@ -17,6 +17,23 @@ MODELO_EMBEDDING = "gemini-embedding-001"
 # Tamanho de cada vetor. 768 é bem menor que o padrão (3072) e funciona bem para textos curtos
 DIMENSOES = 768
 
+# Modelo que escreve a resposta. Dá pra trocar no .env sem mexer no código
+MODELO_LLM = os.getenv("MODELO_LLM", "gemini-3.8-flash")
+# Modelo reserva: usado quando o principal está ocupado ou lento
+MODELO_RESERVA = os.getenv("MODELO_RESERVA", "gemini-3.1-flash-lite")
+
+# Nomes bonitos para mostrar nas fontes
+NOMES_DOCUMENTOS = {
+    "regimento-geral.pdf": "Regimento Geral da UFC",
+    "estatuto-ufc.pdf": "Estatuto da UFC",
+    "prograd-supressao.pdf": "Prograd: Perguntas sobre supressão e trancamento",
+}
+
+
+def nome_do_documento(arquivo: str) -> str:
+    return NOMES_DOCUMENTOS.get(arquivo, arquivo)
+
+
 # Onde o ChromaDB salva o banco vetorial
 PASTA_CHROMA = PASTA_BACKEND / "chroma_db"
 NOME_COLECAO = "documentos_ufc"
