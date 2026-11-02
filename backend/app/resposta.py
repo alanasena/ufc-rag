@@ -15,7 +15,7 @@ import time
 from google.genai import errors, types
 
 from app.busca import buscar
-from app.config import MODELO_LLM, MODELO_RESERVA, nome_do_documento
+from app.config import MODELO_LLM, MODELO_RESERVA, MODELOS_EXTRAS, nome_do_documento
 from app.embeddings import cliente
 
 QUANTIDADE_TRECHOS = 6
@@ -47,10 +47,12 @@ ERROS_TEMPORARIOS = (429, 500, 503, 504)
 
 
 def montar_config(modelo: str) -> types.GenerateContentConfig:
-    config = types.GenerateContentConfig(
-        system_instruction=INSTRUCOES,
-        temperature=0.1,  # baixa = respostas mais fiéis e menos "criativas"
-    )
+    config = types.GenerateContentConfig(temperature=0.1)  # baixa = respostas mais fiéis
+    if modelo.startswith("gemma"):
+        # O Gemma não aceita "instruções de sistema" nem controle de pensamento.
+        # As regras vão junto com a pergunta (ver montar_conteudo).
+        return config
+    config.system_instruction = INSTRUCOES
     # Diminui o "pensamento" do modelo: responde mais rápido e gasta menos cota
     if modelo.startswith("gemini-2.5"):
         config.thinking_config = types.ThinkingConfig(thinking_budget=0)
@@ -59,30 +61,38 @@ def montar_config(modelo: str) -> types.GenerateContentConfig:
     return config
 
 
+def montar_conteudo(modelo: str, prompt: str) -> str:
+    if modelo.startswith("gemma"):
+        return f"{INSTRUCOES}\n\n{prompt}"
+    return prompt
+
+
 def chamar_gemini(prompt: str) -> str:
-    """Tenta o modelo principal 3 vezes. Se continuar falhando, tenta o modelo reserva."""
-    modelos = list(dict.fromkeys([MODELO_LLM, MODELO_RESERVA]))  # sem repetir se forem iguais
+    """Tenta cada modelo da lista (até 2 vezes cada) até um responder.
+
+    Ordem: principal → reserva → extras. Se um modelo estiver lotado ou não existir,
+    passa para o próximo. Assim, um pico de uso num modelo não derruba o assistente.
+    """
+    modelos = list(dict.fromkeys([MODELO_LLM, MODELO_RESERVA, *MODELOS_EXTRAS]))  # sem repetir
     ultimo_erro = None
     for n, modelo in enumerate(modelos):
         if n > 0:
-            print(f"  Trocando para o modelo reserva ({modelo})...")
-        for tentativa in range(3):
+            print(f"  Tentando outro modelo: {modelo}...")
+        for tentativa in range(2):
             try:
                 resposta = cliente.models.generate_content(
-                    model=modelo, contents=prompt, config=montar_config(modelo)
+                    model=modelo, contents=montar_conteudo(modelo, prompt), config=montar_config(modelo)
                 )
                 return (resposta.text or "").strip()
             except errors.APIError as erro:
                 ultimo_erro = erro
-                if erro.code == 404:
-                    print(f"  Modelo {modelo} não encontrado, pulando.")
-                    break
-                if erro.code not in ERROS_TEMPORARIOS:
-                    raise
-                if tentativa < 2:
-                    espera = 10 * 2**tentativa  # 10s, 20s
-                    print(f"  {modelo} respondeu erro {erro.code}. Esperando {espera}s...")
-                    time.sleep(espera)
+                if erro.code in ERROS_TEMPORARIOS and tentativa == 0:
+                    print(f"  {modelo} respondeu erro {erro.code}. Esperando 8s...")
+                    time.sleep(8)
+                    continue
+                # 404 (não existe), 400 (não aceita alguma opção) ou lotado de novo: próximo modelo
+                print(f"  {modelo} falhou (erro {erro.code}), pulando.")
+                break
     raise ultimo_erro
 
 

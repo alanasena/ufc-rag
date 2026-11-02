@@ -20,7 +20,14 @@ DIMENSOES = 768
 # Modelo que escreve a resposta. Dá pra trocar no .env sem mexer no código
 MODELO_LLM = os.getenv("MODELO_LLM", "gemini-3.8-flash")
 # Modelo reserva: usado quando o principal está ocupado ou lento
-MODELO_RESERVA = os.getenv("MODELO_RESERVA", "gemini-3.1-flash-lite")
+MODELO_RESERVA = os.getenv("MODELO_RESERVA", "gemini-3.8-flash")
+# Mais opções, separadas por vírgula, para quando o Gemini estiver lotado.
+# O Gemma é um modelo aberto do Google, também grátis na mesma chave e com fila separada.
+MODELOS_EXTRAS = [
+    m.strip()
+    for m in os.getenv("MODELOS_EXTRAS", "gemini-3.5-flash-lite,gemma-4-31b-it").split(",")
+    if m.strip()
+]
 
 # Nomes bonitos para mostrar nas fontes
 NOMES_DOCUMENTOS = {
