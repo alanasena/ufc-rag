@@ -60,10 +60,13 @@ def montar_config(modelo: str) -> types.GenerateContentConfig:
 
 
 def chamar_gemini(prompt: str) -> str:
-    """Tenta o modelo principal 2 vezes. Se continuar falhando, tenta o modelo reserva."""
+    """Tenta o modelo principal 3 vezes. Se continuar falhando, tenta o modelo reserva."""
+    modelos = list(dict.fromkeys([MODELO_LLM, MODELO_RESERVA]))  # sem repetir se forem iguais
     ultimo_erro = None
-    for modelo in [MODELO_LLM, MODELO_RESERVA]:
-        for tentativa in range(2):
+    for n, modelo in enumerate(modelos):
+        if n > 0:
+            print(f"  Trocando para o modelo reserva ({modelo})...")
+        for tentativa in range(3):
             try:
                 resposta = cliente.models.generate_content(
                     model=modelo, contents=prompt, config=montar_config(modelo)
@@ -74,13 +77,12 @@ def chamar_gemini(prompt: str) -> str:
                 if erro.code == 404:
                     print(f"  Modelo {modelo} não encontrado, pulando.")
                     break
-                if erro.code in ERROS_TEMPORARIOS:
-                    espera = 10 * (tentativa + 1)
+                if erro.code not in ERROS_TEMPORARIOS:
+                    raise
+                if tentativa < 2:
+                    espera = 10 * 2**tentativa  # 10s, 20s
                     print(f"  {modelo} respondeu erro {erro.code}. Esperando {espera}s...")
                     time.sleep(espera)
-                else:
-                    raise
-        print(f"  Trocando para o modelo reserva ({MODELO_RESERVA})...")
     raise ultimo_erro
 
 
@@ -106,7 +108,9 @@ def responder(pergunta: str) -> dict:
     if RESPOSTA_SEM_INFO in texto:
         fontes = []
 
-    return {"resposta": texto, "fontes": fontes}
+    # "trechos" = tudo que a busca trouxe. A API não manda isso pro site,
+    # mas a avaliação usa para medir se a busca encontrou o trecho certo.
+    return {"resposta": texto, "fontes": fontes, "trechos": trechos}
 
 
 if __name__ == "__main__":

@@ -38,7 +38,13 @@ def gerar_embeddings(textos: list[str], tipo: str) -> list[list[float]]:
             )
             return [e.values for e in resposta.embeddings]
         except errors.APIError as erro:
-            # 429 = limite do plano grátis. Espera um pouco e tenta de novo.
+            # Limite POR DIA: não adianta esperar alguns segundos, só amanhã
+            if erro.code == 429 and "PerDay" in str(erro):
+                raise RuntimeError(
+                    "A cota diária de embeddings do plano grátis acabou. Ela volta amanhã. "
+                    "O que já foi gerado está salvo no cache."
+                ) from erro
+            # 429 = limite POR MINUTO do plano grátis. Espera um pouco e tenta de novo.
             if erro.code == 429 and tentativa < 4:
                 espera = 30 * (tentativa + 1)
                 print(f"  Limite do plano grátis atingido. Esperando {espera}s...")

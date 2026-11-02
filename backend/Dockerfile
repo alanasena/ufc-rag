@@ -12,9 +12,11 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Depois o código e os PDFs
+# Depois o código, os PDFs e o cache de embeddings
+# (com o cache, o container cria o banco sem gastar nenhuma chamada do Gemini)
 COPY app ./app
 COPY docs ./docs
+COPY cache ./cache
 
 EXPOSE 8000
 

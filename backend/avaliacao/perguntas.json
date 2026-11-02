@@ -1,0 +1,150 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Quantas faltas posso ter?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "113",
+    "palavras_chave": ["75"]
+  },
+  {
+    "id": 2,
+    "pergunta": "Qual a média para passar direto, sem avaliação final?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "114",
+    "palavras_chave": ["7|sete"]
+  },
+  {
+    "id": 3,
+    "pergunta": "Com qual média eu vou para a avaliação final?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "114",
+    "palavras_chave": ["4|quatro", "7|sete"]
+  },
+  {
+    "id": 4,
+    "pergunta": "Depois da avaliação final, qual a média final mínima para ser aprovado?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "114",
+    "palavras_chave": ["5|cinco"]
+  },
+  {
+    "id": 5,
+    "pergunta": "Até quando posso trancar uma disciplina?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "101",
+    "palavras_chave": ["metade"]
+  },
+  {
+    "id": 6,
+    "pergunta": "Posso trancar uma disciplina no meu primeiro semestre?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "101",
+    "palavras_chave": ["nao", "ingresso"]
+  },
+  {
+    "id": 7,
+    "pergunta": "Quantas vezes posso trancar a mesma disciplina?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "101",
+    "palavras_chave": ["uma"]
+  },
+  {
+    "id": 8,
+    "pergunta": "Quais motivos permitem fazer o trancamento total do semestre?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "101-A",
+    "palavras_chave": ["doenca", "emprego"]
+  },
+  {
+    "id": 9,
+    "pergunta": "Posso trancar o semestre inteiro logo no semestre de ingresso?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "101-A",
+    "palavras_chave": ["doenca", "militar"]
+  },
+  {
+    "id": 10,
+    "pergunta": "Qual o prazo para pedir segunda chamada de uma prova?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "110",
+    "palavras_chave": ["3|tres", "uteis"]
+  },
+  {
+    "id": 11,
+    "pergunta": "Quanto tempo tenho para pedir revisão de prova?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "110",
+    "palavras_chave": ["3|tres"]
+  },
+  {
+    "id": 12,
+    "pergunta": "Posso estar matriculado em dois cursos de graduação da UFC ao mesmo tempo?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "83",
+    "palavras_chave": ["nao"]
+  },
+  {
+    "id": 13,
+    "pergunta": "Entrei pelo Sisu. Quanto da carga horária do curso posso aproveitar de outro curso?",
+    "deve_responder": true,
+    "documento": "regimento-geral.pdf",
+    "artigo": "98",
+    "palavras_chave": ["50|cinquenta"]
+  },
+  {
+    "id": 14,
+    "pergunta": "Suprimir uma disciplina afeta meu IRA?",
+    "deve_responder": true,
+    "documento": "prograd-supressao.pdf",
+    "artigo": null,
+    "palavras_chave": ["nao"]
+  },
+  {
+    "id": 15,
+    "pergunta": "Quanto tempo dura o mandato do reitor?",
+    "deve_responder": true,
+    "documento": "estatuto-ufc.pdf",
+    "artigo": "24",
+    "palavras_chave": ["4|quatro"]
+  },
+  {
+    "id": 16,
+    "pergunta": "Quantos representantes dos estudantes de graduação fazem parte do Conselho Universitário?",
+    "deve_responder": true,
+    "documento": "estatuto-ufc.pdf",
+    "artigo": "10",
+    "palavras_chave": ["6|seis"]
+  },
+  {
+    "id": 17,
+    "pergunta": "Qual o horário do restaurante universitário?",
+    "deve_responder": false
+  },
+  {
+    "id": 18,
+    "pergunta": "Qual o valor da bolsa de iniciação científica?",
+    "deve_responder": false
+  },
+  {
+    "id": 19,
+    "pergunta": "Quem é o reitor atual da UFC?",
+    "deve_responder": false
+  },
+  {
+    "id": 20,
+    "pergunta": "Qual a senha do Wi-Fi do campus de Russas?",
+    "deve_responder": false
+  }
+]

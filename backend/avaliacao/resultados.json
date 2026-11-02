@@ -1,0 +1,248 @@
+{
+  "data": "2026-11-02 14:37",
+  "modelo": "gemini-3.1-flash-lite",
+  "resumo": {
+    "Busca encontrou o trecho certo (top 6)": "94% (15/16)",
+    "Resposta correta (perguntas dos documentos)": "100% (16/16)",
+    "Citou a fonte certa": "88% (14/16)",
+    "Disse que não sabe (perguntas fora dos documentos)": "100% (4/4)",
+    "Acerto geral": "100% (20/20)"
+  },
+  "detalhes": [
+    {
+      "id": 1,
+      "pergunta": "Quantas faltas posso ter?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Para ser aprovado, você deve frequentar 75% ou mais da carga horária da disciplina, sendo vedado o abono de faltas [1]. Portanto, o limite de faltas permitido é de até 25% da carga horária total da disciplina.",
+      "fontes": [
+        "regimento-geral.pdf p.29"
+      ]
+    },
+    {
+      "id": 2,
+      "pergunta": "Qual a média para passar direto, sem avaliação final?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Para ser aprovado por média, sem necessidade de avaliação final, o aluno deve obter uma média aritmética das notas das avaliações progressivas igual ou superior a 07 (sete) [1] (Art. 114).",
+      "fontes": [
+        "regimento-geral.pdf p.29"
+      ]
+    },
+    {
+      "id": 3,
+      "pergunta": "Com qual média eu vou para a avaliação final?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Você será submetido à avaliação final se obtiver uma média aritmética das avaliações progressivas igual ou superior a 04 (quatro) e inferior a 07 (sete) [1].\n\nArt. 114, § 1º.",
+      "fontes": [
+        "regimento-geral.pdf p.29"
+      ]
+    },
+    {
+      "id": 4,
+      "pergunta": "Depois da avaliação final, qual a média final mínima para ser aprovado?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Para ser aprovado após a avaliação final, o aluno deve obter nota igual ou superior a 04 (quatro) na avaliação final e média final igual ou superior a 05 (cinco) [1].\n\n(Art. 114, § 2º)",
+      "fontes": [
+        "regimento-geral.pdf p.29"
+      ]
+    },
+    {
+      "id": 5,
+      "pergunta": "Até quando posso trancar uma disciplina?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Você pode solicitar o trancamento parcial de matrícula em um ou mais componentes curriculares antes de ocorrida a metade do período letivo semestral ou anual, em datas previstas no calendário universitário [1].\n\nEssa solicitação deve ser feita ao coordenador do curso, respeitando os prazos indicados no calendário universitário [1].",
+      "fontes": [
+        "regimento-geral.pdf p.26"
+      ]
+    },
+    {
+      "id": 6,
+      "pergunta": "Posso trancar uma disciplina no meu primeiro semestre?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Não, não é permitido o trancamento parcial (de uma ou mais disciplinas) no semestre de ingresso do aluno no curso [1].\n\nQuanto ao trancamento total (de todas as disciplinas), ele só é permitido no semestre de ingresso mediante motivos específicos: doença atestada pelo Serviço Médico da UFC ou obrigação de ordem militar [2][4].",
+      "fontes": [
+        "regimento-geral.pdf p.26",
+        "regimento-geral.pdf p.27",
+        "regimento-geral.pdf p.26"
+      ]
+    },
+    {
+      "id": 7,
+      "pergunta": "Quantas vezes posso trancar a mesma disciplina?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "O trancamento parcial de um mesmo componente curricular é permitido apenas uma única vez, exceto por motivo de doença devidamente comprovado pelo Serviço Médico da Universidade [1].\n\nEssa regra consta no Art. 101, § 3º, do Regimento Geral da UFC [1].",
+      "fontes": [
+        "regimento-geral.pdf p.26"
+      ]
+    },
+    {
+      "id": 8,
+      "pergunta": "Quais motivos permitem fazer o trancamento total do semestre?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": false,
+      "resposta": "O trancamento total de matrícula pode ser solicitado mediante a apresentação de documento comprobatório de um dos seguintes fatos geradores:\n\n*   Doença atestada pelo Serviço Médico da UFC;\n*   Mudança de domicílio atestada por comprovantes recentes do domicílio atual e do anterior;\n*   Exercício de emprego;\n*   Obrigação de ordem militar.\n\n[Art. 101-A, 1]",
+      "fontes": []
+    },
+    {
+      "id": 9,
+      "pergunta": "Posso trancar o semestre inteiro logo no semestre de ingresso?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Sim, é permitido, mas apenas por motivos específicos: doença atestada pelo Serviço Médico da UFC ou obrigação de ordem militar [3].\n\nO trancamento total no semestre de ingresso só é autorizado mediante a apresentação de documento comprobatório desses dois fatos geradores [2][3].",
+      "fontes": [
+        "regimento-geral.pdf p.27",
+        "regimento-geral.pdf p.26"
+      ]
+    },
+    {
+      "id": 10,
+      "pergunta": "Qual o prazo para pedir segunda chamada de uma prova?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "O prazo para solicitar a segunda chamada de provas é de até 03 (três) dias úteis após a realização da prova em primeira chamada [1].",
+      "fontes": [
+        "regimento-geral.pdf p.29"
+      ]
+    },
+    {
+      "id": 11,
+      "pergunta": "Quanto tempo tenho para pedir revisão de prova?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Você tem o prazo de 03 (três) dias úteis após o conhecimento do resultado da avaliação para solicitar a revisão da prova [1]. O pedido deve ser feito de forma justificada e encaminhado através do chefe do Departamento correspondente [1].",
+      "fontes": [
+        "regimento-geral.pdf p.29"
+      ]
+    },
+    {
+      "id": 12,
+      "pergunta": "Posso estar matriculado em dois cursos de graduação da UFC ao mesmo tempo?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Não, não é permitida a matrícula simultânea em dois ou mais cursos de graduação da Universidade [3].\n\nArt. 83, § 3º.",
+      "fontes": [
+        "regimento-geral.pdf p.21"
+      ]
+    },
+    {
+      "id": 13,
+      "pergunta": "Entrei pelo Sisu. Quanto da carga horária do curso posso aproveitar de outro curso?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Se você ingressou por meio do Sistema de Seleção Unificada (Sisu), você poderá aproveitar até, no máximo, 50% (cinquenta por cento) da carga horária total do curso pretendido [1].\n\nNo entanto, caso você esteja reingressando, pelo Sisu, no mesmo curso da UFC, a carga horária a ser registrada de ofício não terá limite máximo [2].",
+      "fontes": [
+        "regimento-geral.pdf p.25",
+        "regimento-geral.pdf p.26"
+      ]
+    },
+    {
+      "id": 14,
+      "pergunta": "Suprimir uma disciplina afeta meu IRA?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "Não, a supressão de disciplinas não afeta o Índice de Rendimento Acadêmico (IRA) [1][2].",
+      "fontes": [
+        "prograd-supressao.pdf p.2",
+        "prograd-supressao.pdf p.2"
+      ]
+    },
+    {
+      "id": 15,
+      "pergunta": "Quanto tempo dura o mandato do reitor?",
+      "deve_responder": true,
+      "busca_ok": true,
+      "resposta_ok": true,
+      "citacao_ok": true,
+      "resposta": "O mandato do Reitor tem duração de 04 (quatro) anos [1].",
+      "fontes": [
+        "estatuto-ufc.pdf p.18"
+      ]
+    },
+    {
+      "id": 16,
+      "pergunta": "Quantos representantes dos estudantes de graduação fazem parte do Conselho Universitário?",
+      "deve_responder": true,
+      "busca_ok": false,
+      "resposta_ok": true,
+      "citacao_ok": false,
+      "resposta": "O Conselho Universitário possui 06 (seis) representantes dos estudantes dos cursos de graduação [1].",
+      "fontes": [
+        "estatuto-ufc.pdf p.10"
+      ]
+    },
+    {
+      "id": 17,
+      "pergunta": "Qual o horário do restaurante universitário?",
+      "deve_responder": false,
+      "busca_ok": null,
+      "resposta_ok": true,
+      "citacao_ok": null,
+      "resposta": "Não encontrei essa informação nos documentos oficiais que eu tenho.",
+      "fontes": []
+    },
+    {
+      "id": 18,
+      "pergunta": "Qual o valor da bolsa de iniciação científica?",
+      "deve_responder": false,
+      "busca_ok": null,
+      "resposta_ok": true,
+      "citacao_ok": null,
+      "resposta": "Não encontrei essa informação nos documentos oficiais que eu tenho.",
+      "fontes": []
+    },
+    {
+      "id": 19,
+      "pergunta": "Quem é o reitor atual da UFC?",
+      "deve_responder": false,
+      "busca_ok": null,
+      "resposta_ok": true,
+      "citacao_ok": null,
+      "resposta": "Não encontrei essa informação nos documentos oficiais que eu tenho.",
+      "fontes": []
+    },
+    {
+      "id": 20,
+      "pergunta": "Qual a senha do Wi-Fi do campus de Russas?",
+      "deve_responder": false,
+      "busca_ok": null,
+      "resposta_ok": true,
+      "citacao_ok": null,
+      "resposta": "Não encontrei essa informação nos documentos oficiais que eu tenho.",
+      "fontes": []
+    }
+  ]
+}

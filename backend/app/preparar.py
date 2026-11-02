@@ -1,25 +1,11 @@
-"""Roda antes de ligar a API: se o banco vetorial ainda não existe, cria ele.
+"""Roda antes de ligar a API: monta o banco vetorial a partir dos PDFs.
 
-Assim o container funciona sozinho, sem precisar rodar `python -m app.indexar` na mão.
+Com o cache de embeddings (cache/embeddings.json), isso leva poucos segundos
+e não gasta nenhuma chamada do Gemini. Só pedaços novos vão para a API.
+Como roda toda vez, o banco nunca fica desatualizado em relação aos PDFs e ao código.
 """
 
-import chromadb
-
-from app.config import NOME_COLECAO, PASTA_CHROMA
 from app.indexar import indexar
 
-
-def banco_pronto() -> bool:
-    try:
-        banco = chromadb.PersistentClient(path=str(PASTA_CHROMA))
-        return banco.get_collection(NOME_COLECAO).count() > 0
-    except Exception:
-        return False
-
-
 if __name__ == "__main__":
-    if banco_pronto():
-        print("Banco vetorial já existe. Pulando a indexação.")
-    else:
-        print("Banco vetorial não encontrado. Criando agora (leva alguns minutos)...")
-        indexar()
+    indexar()
