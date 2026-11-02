@@ -205,6 +205,6 @@ ufc-rag/
 
 Feito por **Alana Oliveira de Sena**, estudante de Engenharia de Software na UFC, Campus Russas.
 
-[GitHub](https://github.com/alanasena) · [LinkedIn](www.linkedin.com/in/alanaasena)
+[GitHub](https://github.com/alanasena) · [LinkedIn](https://www.linkedin.com/in/alanaasena)
 
 > Projeto de estudo, não é um canal oficial da UFC.
