@@ -1,4 +1,4 @@
-# 🎓 Assistente Acadêmico UFC
+# 🎓 Tira-Dúvidas UFC
 
 Um assistente com IA que responde dúvidas de estudantes da **Universidade Federal do Ceará** sobre as regras da graduação, como faltas, trancamento e notas. Ele busca a resposta **nos documentos oficiais**, mostra **de qual documento e página** ela veio e, quando a informação não está nos documentos, **diz que não sabe em vez de inventar**.
 

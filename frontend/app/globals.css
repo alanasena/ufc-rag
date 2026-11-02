@@ -1,60 +1,68 @@
 @import "tailwindcss";
 
-/* Cores e fontes do projeto (viram classes do Tailwind: bg-papel, text-tinta, bg-sol...) */
+/* Paleta inspirada em placas retrô de lanchonete
+   (viram classes do Tailwind: bg-creme, text-tinta, bg-vermelho, bg-rosa...) */
 @theme {
-  --color-papel: #f7f4ee;
-  --color-tinta: #142033;
-  --color-sol: #f2b544;
-  --font-sans: var(--font-geist), system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
+  --color-creme: #fff4dc;
+  --color-tinta: #3b0a0a;
+  --color-vermelho: #e0261b;
+  --color-rosa: #f58bc8;
+  --color-amarelo: #ffc83d;
+  --color-laranja: #ff7a1a;
+  --font-sans: var(--font-corpo), system-ui, sans-serif;
+  --font-titulo: var(--font-retro), Georgia, serif;
 }
 
 body {
-  background: var(--color-papel);
+  background: var(--color-creme);
   color: var(--color-tinta);
   font-family: var(--font-sans);
 }
 
-/* Bolinha numerada das citações [1], [2]... */
-.citacao {
-  display: inline-grid;
-  place-items: center;
-  min-width: 1.15rem;
-  height: 1.15rem;
-  margin-left: 0.15rem;
-  padding: 0 0.25rem;
-  border-radius: 999px;
-  background: var(--color-sol);
-  color: var(--color-tinta);
-  font-size: 0.68rem;
-  font-weight: 600;
-  vertical-align: super;
-  line-height: 1;
+/* Faixa listrada do topo */
+.listras {
+  background: repeating-linear-gradient(90deg, var(--color-vermelho) 0 18px, var(--color-rosa) 18px 36px);
 }
 
-.citacao-grande {
-  min-width: 1.5rem;
-  height: 1.5rem;
-  margin: 0;
-  font-size: 0.75rem;
-  vertical-align: middle;
+/* Sombra "dura", estilo adesivo */
+.sombra-dura {
+  box-shadow: 4px 4px 0 var(--color-tinta);
+}
+.sombra-dura-sm {
+  box-shadow: 3px 3px 0 var(--color-tinta);
 }
 
-/* Marca-texto amarelo no título */
-.destaque {
-  background: linear-gradient(transparent 60%, color-mix(in srgb, var(--color-sol) 55%, transparent) 60%);
-  padding: 0 0.15em;
+/* Título com contorno creme, como letreiro */
+.letreiro {
+  font-family: var(--font-titulo);
+  text-shadow:
+    3px 3px 0 var(--color-creme),
+    5px 5px 0 var(--color-tinta);
 }
 
-/* Animação dos "..." enquanto carrega */
-.pontinhos::after {
-  content: "";
-  animation: pontinhos 1.2s steps(4, end) infinite;
+/* Fita que passa rolando com os nomes dos documentos */
+.fita-trilho {
+  display: flex;
+  width: max-content;
+  animation: fita 28s linear infinite;
+}
+@keyframes fita {
+  to { transform: translateX(-50%); }
 }
 
-@keyframes pontinhos {
-  0% { content: ""; }
-  25% { content: "."; }
-  50% { content: ".."; }
-  75% { content: "..."; }
+/* Estrelinhas pulando enquanto carrega */
+.pulando {
+  display: inline-block;
+  animation: pulando 0.9s ease-in-out infinite;
+}
+.pulando:nth-child(2) { animation-delay: 0.15s; }
+.pulando:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulando {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Quem prefere menos movimento (configuração do sistema) não vê animação */
+@media (prefers-reduced-motion: reduce) {
+  .fita-trilho, .pulando { animation: none; }
 }

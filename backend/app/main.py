@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 from app.resposta import responder
 
 app = FastAPI(
-    title="Assistente UFC",
+    title="Tira-Dúvidas UFC",
     description="Responde dúvidas sobre documentos oficiais da UFC usando RAG",
     version="1.0.0",
 )

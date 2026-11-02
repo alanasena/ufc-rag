@@ -16,11 +16,17 @@ export type RespostaApi = {
 };
 
 export async function perguntar(pergunta: string): Promise<RespostaApi> {
-  const resposta = await fetch(`${API_URL}/perguntar`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ pergunta }),
-  });
+  let resposta: Response;
+  try {
+    resposta = await fetch(`${API_URL}/perguntar`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pergunta }),
+    });
+  } catch {
+    // Nem chegou na API: ela está desligada, sem internet, ou bloqueada pelo CORS
+    throw new Error("Não consegui falar com o servidor agora. Confira sua internet e tente de novo em alguns segundos.");
+  }
 
   if (!resposta.ok) {
     const erro = await resposta.json().catch(() => null);
