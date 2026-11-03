@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { perguntar } from "@/lib/api";
+import { acordarServidor, perguntar } from "@/lib/api";
 import { Estrela, Fita, Selo } from "./Enfeites";
 import { Avatar, Mensagem, type MensagemChat } from "./Mensagem";
 
@@ -23,6 +23,11 @@ export function Chat() {
   const [demorando, setDemorando] = useState(false);
   const fimRef = useRef<HTMLDivElement>(null);
   const proximoId = useRef(0);
+
+  // Assim que o site abre, já acorda o servidor
+  useEffect(() => {
+    acordarServidor();
+  }, []);
 
   // Rola a tela para a última mensagem
   useEffect(() => {

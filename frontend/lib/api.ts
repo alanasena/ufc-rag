@@ -36,3 +36,12 @@ export async function perguntar(pergunta: string): Promise<RespostaApi> {
 
   return resposta.json();
 }
+
+// Manda um "oi" pra API assim que o site abre.
+// No plano grátis do Render a API dorme; assim ela já vai acordando
+// enquanto a pessoa lê a tela e digita a pergunta.
+export function acordarServidor(): void {
+  fetch(`${API_URL}/saude`).catch(() => {
+    // se falhar, tudo bem: a pergunta tenta de novo
+  });
+}
