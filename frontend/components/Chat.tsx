@@ -150,7 +150,7 @@ export function Chat() {
                   </span>
                   {demorando && (
                     <p className="mt-1 text-tinta/70">
-                      O servidor grátis estava dormindo e está acordando. Pode levar até 1 minuto. 😴
+                      O servidor grátis estava dormindo e está acordando. Pode levar cerca de 1 minuto. 😴
                     </p>
                   )}
                 </div>

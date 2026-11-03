@@ -7,8 +7,7 @@ services:
       CORS_ORIGINS: http://localhost:3000
     ports:
       - "8000:8000"
-    volumes:
-      - chroma_data:/app/chroma_db    # guarda o banco vetorial entre um "up" e outro
+    # o banco vetorial já vem pronto dentro da imagem (é montado no build)
 
   frontend:
     build:
@@ -20,6 +19,3 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-
-volumes:
-  chroma_data:
